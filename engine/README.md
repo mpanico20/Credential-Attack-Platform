@@ -9,23 +9,32 @@ domani vuole aprire, configurare e far girare un test.
 
 ---
 
-## 1. Preparazione (una volta sola)
+## 1. Installazione (una volta sola)
 
+**Passo 1 — virtualenv Python** (serve Python 3.11+):
 ```bash
-# 1. crea ed attiva un virtualenv
 python -m venv .venv
-.venv\Scripts\activate        # Windows
-# source .venv/bin/activate   # Linux/Kali
-
-# 2. installa le dipendenze
-pip install -r requirements.txt
-
-# 3. SOLO se usi il backend Camoufox: scarica il Firefox patchato (una volta)
-camoufox fetch
+source .venv/bin/activate     # Linux/Kali
+# .venv\Scripts\activate      # Windows
 ```
 
-Note:
-- Il backend **`cdp`** (Chrome/SeleniumBase) non richiede `camoufox fetch`.
+**Passo 2 — dipendenze Python:**
+```bash
+pip install -r requirements.txt
+```
+
+**Passo 3 — Camoufox: NON basta pip, serve anche `fetch`.**
+`pip install` installa solo la libreria; il **browser Firefox patchato va scaricato
+a parte**, una volta sola, con:
+```bash
+camoufox fetch
+```
+> ⚠️ Senza `camoufox fetch` il backend Camoufox **non parte**. E attenzione: nel
+> `config.yaml` il backend di default è proprio `camoufox` (`browser.backend`),
+> quindi questo passo serve per l'uso normale. Lo puoi saltare **solo** se usi il
+> backend `cdp` (Chrome/SeleniumBase), che si auto-gestisce il browser.
+
+**Note:**
 - La chiave del solver CAPTCHA si passa via **variabile d'ambiente**, mai nel config:
   ```bash
   set CAPSOLVER_API_KEY=la_tua_chiave      # Windows
