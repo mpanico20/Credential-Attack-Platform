@@ -1,0 +1,6 @@
+User1:LabUser
+User5:Qwerty2024
+d.marino:Milano2024
+chiara.greco:Password1!
+User6:Welcome2024
+matteo.rizzo:Inter2023

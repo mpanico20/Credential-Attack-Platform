@@ -1,0 +1,24 @@
+# Password per il BRUTE FORCE su un singolo account (--username User1).
+# La password corretta (LabUser1!) e' alla posizione 15: con il LOCKOUT (10)
+# l'account viene bloccato PRIMA di arrivarci (recall 0); in baseline la trova.
+# -> --valid 1
+Password1
+123456
+qwerty
+admin
+password123
+Welcome1
+LabUser1
+Estate2024!
+P@ssw0rd
+letmein
+Primavera2024
+Autunno123
+Changeme1
+Qwerty123!
+LabUser1!
+Napoli1926
+Juventus2024
+Inter2023
+Milano2024
+Admin2024!

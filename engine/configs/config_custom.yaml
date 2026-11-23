@@ -1,0 +1,58 @@
+concurrency:
+  max_workers: 5
+rate_limit:
+  min_delay_s: 0.0
+  max_delay_s: 0.0
+  jitter_s: 0.0
+browser:
+  headless: true
+  timeout_s: 30
+  backend: cdp
+camoufox:
+  os: windows
+  geoip: true
+  humanize: true
+identity:
+  requests_per_identity: 1000
+  requests_per_identity_min: null
+  requests_per_identity_max: null
+backoff:
+  enabled: false
+  lockout_cooldown_s: 900
+  block_base_delay_s: 5
+  block_max_delay_s: 120
+  backoff_factor: 2.0
+proxy:
+  source_file: proxies/proxies.txt
+  check_url: https://httpbin.org/ip
+  check_timeout_s: 10
+  rotation: round_robin
+logging:
+  output_dir: logs
+wazuh:
+  host: ''
+  port: 9200
+  username: ''
+  password: ''
+  verify_ssl: false
+  alerts_index: wazuh-alerts-*
+hibp:
+  api_key: ''
+targets:
+- name: portal-ip
+  base_url: https://portal.local/login.php
+  login_type: http_form
+  username_selector: '#username'
+  password_selector: '#password'
+  submit_selector: button[type='submit']
+  success_indicator: a[href='logout.php']
+  failure_indicator: .alert-error
+  lockout_indicator: .alert-warning
+  block_indicator: .alert-rate
+  captcha_indicator: null
+  captcha_when: after_submit
+  ldap_server: null
+  ldap_base_dn: null
+  ldap_user_dn_template: null
+  ssh_host: null
+  ssh_port: 22

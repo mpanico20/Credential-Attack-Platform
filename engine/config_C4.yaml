@@ -1,0 +1,125 @@
+concurrency:
+  max_workers: 1
+
+rate_limit:
+  min_delay_s: 20.0
+  max_delay_s: 40.0
+  jitter_s: 15.0
+
+browser:
+  headless: true
+  timeout_s: 30
+  backend: cdp
+  headed_on_linux: false
+
+camoufox:
+  os: random
+  geoip: true
+  humanize: true
+
+identity:
+  requests_per_identity: 3
+  requests_per_identity_min: 4
+  requests_per_identity_max: 8
+
+backoff:
+  enabled: true
+  lockout_cooldown_s: 900
+  block_base_delay_s: 5
+  block_max_delay_s: 120
+  backoff_factor: 2.0
+
+proxy:
+  source_file: proxies/data.txt
+  check_url: https://httpbin.org/ip
+  check_timeout_s: 10
+  rotation: round_robin
+
+logging:
+  output_dir: logs
+
+wazuh:
+  host: ""
+  port: 9200
+  username: ""
+  password: ""
+  verify_ssl: false
+  alerts_index: "wazuh-alerts-*"
+
+hibp:
+  api_key: ""
+
+captcha:
+  type: auto
+  solver: none
+  api_key: ""
+  invisible: false
+  action: null
+  min_score: null
+  poll_timeout_s: 120
+  auto_wait_s: 6
+
+exploit:
+  enabled: false
+  base_url: ""
+  login_path: login.php
+  upload_path: upload.php
+  upload_field: file
+  uploads_dir: uploads
+  lhost: "192.168.1.42"
+  lport: 4444
+  payload: php_reverse_fsock
+  payload_template_file: null
+  verify_cmd: "id; hostname; uname -a"
+  callback_timeout_s: 15
+  trigger_read_timeout_s: 4
+  http_timeout_s: 15
+  verify_ssl: false
+  run_once: true
+
+targets:
+  - name: portal-local
+    base_url: "https://portal.local/login.php"
+    login_type: http_form
+    username_selector: "#username"
+    password_selector: "#password"
+    submit_selector: "button[type='submit']"
+    success_indicator: "a[href='logout.php']"
+    failure_indicator: ".alert-error"
+    lockout_indicator: ".alert-warning"
+    block_indicator: ".alert-rate"
+
+  - name: portal-ip
+    base_url: "https://v2.uni-portal.it/login.php"
+    login_type: http_form
+    username_selector: "#username"
+    password_selector: "#password"
+    submit_selector: "button[type='submit']"
+    success_indicator: "a[href='logout.php']"
+    failure_indicator: ".alert-error"
+    lockout_indicator: ".alert-warning"
+    block_indicator: ".alert-rate"
+
+  - name: portal-turnstile
+    base_url: "https://cpa.uni-portal.it/login.php"
+    login_type: http_form
+    username_selector: "#username"
+    password_selector: "#password"
+    submit_selector: "button[type='submit']"
+    success_indicator: "a[href='logout.php']"
+    failure_indicator: ".alert-error"
+    lockout_indicator: ".alert-warning"
+    captcha_sitekey: ""
+
+  - name: demo-ldap
+    base_url: ""
+    login_type: ldap
+    ldap_server: "ldap://TARGET-IP"
+    ldap_base_dn: "DC=lab,DC=local"
+    ldap_user_dn_template: "{username}@lab.local"
+
+  - name: demo-ssh
+    base_url: ""
+    login_type: ssh
+    ssh_host: "192.168.1.106"
+    ssh_port: 22

@@ -1,0 +1,22 @@
+# BRUTE FORCE su User1, formato combo per naive_http (user:pass).
+# Generato da exp_bruteforce_pw.txt (User1 + ogni password). Valida: User1:LabUser1! (pos.15) -> --valid 1
+User1:Password1
+User1:123456
+User1:qwerty
+User1:admin
+User1:password123
+User1:Welcome1
+User1:LabUser1
+User1:Estate2024!
+User1:P@ssw0rd
+User1:letmein
+User1:Primavera2024
+User1:Autunno123
+User1:Changeme1
+User1:Qwerty123!
+User1:LabUser1!
+User1:Napoli1926
+User1:Juventus2024
+User1:Inter2023
+User1:Milano2024
+User1:Admin2024!

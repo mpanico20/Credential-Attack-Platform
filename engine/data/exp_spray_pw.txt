@@ -1,0 +1,10 @@
+# Password per il PASSWORD SPRAYING: ogni password viene provata su TUTTI gli
+# username (una "spruzzata" per volta). Max 5 password -> max 5 tentativi per
+# account, distribuiti nel tempo: NON innesca lockout (10/15min) ne' throttle
+# (5/60s), cosi' lo spray dimostra di aggirarli.
+# LabUser1! sblocca User1, LabUser21! sblocca User2 -> --valid 2
+LabUser1!
+LabUser21!
+Password1!
+Welcome2024!
+Autunno123

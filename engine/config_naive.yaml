@@ -1,0 +1,61 @@
+concurrency:
+  max_workers: 3
+
+rate_limit:
+  min_delay_s: 0.0
+  max_delay_s: 0.0
+  jitter_s: 0.0
+
+browser:
+  headless: false
+  timeout_s: 30
+  backend: camoufox
+
+camoufox:
+  os: random
+  geoip: true
+  humanize: true
+
+identity:
+  requests_per_identity: 1000
+  requests_per_identity_min: null
+  requests_per_identity_max: null
+
+backoff:
+  enabled: false
+  lockout_cooldown_s: 900
+  block_base_delay_s: 5
+  block_max_delay_s: 120
+  backoff_factor: 2.0
+
+proxy:
+  source_file: proxies/proxies.txt
+  check_url: https://httpbin.org/ip
+  check_timeout_s: 10
+  rotation: round_robin
+
+logging:
+  output_dir: logs
+
+wazuh:
+  host: ""
+  port: 9200
+  username: ""
+  password: ""
+  verify_ssl: false
+  alerts_index: "wazuh-alerts-*"
+
+hibp:
+  api_key: ""
+
+targets:
+  - name: portal-ip
+    base_url: "https://v2.uni-portal.it/login.php"
+    login_type: http_form
+    username_selector: "#username"
+    password_selector: "#password"
+    submit_selector: "button[type='submit']"
+    success_indicator: "a[href='logout.php']"
+    failure_indicator: ".alert-error"
+    lockout_indicator: ".alert-warning"
+    block_indicator: ".alert-rate"

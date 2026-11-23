@@ -1,0 +1,13 @@
+seleniumbase>=4.51
+requests>=2.32
+pyyaml>=6.0
+ldap3>=2.9
+paramiko>=3.4
+
+pandas>=2.2
+matplotlib>=3.8
+
+camoufox>=0.5
+playwright>=1.48
+
+psutil>=5.9

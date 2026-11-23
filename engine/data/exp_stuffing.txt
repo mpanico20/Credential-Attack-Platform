@@ -1,0 +1,26 @@
+# Dataset CREDENTIAL STUFFING per gli esperimenti sulle difese.
+# Credenziali VALIDE piazzate: User1:LabUser1!  e  User2:LabUser21!
+# -> usa  --valid 2   (se User2 NON e' valido nel DB, togline la riga e usa --valid 1)
+# Il resto sono combo invalide (stile leak). Ordine misto: le valide non sono in testa.
+alice:Primavera2024
+bob:Estate2025!
+charlie:Autunno2023
+daniela:Inverno2024!
+User1:LabUser1!
+marco.rossi:Welcome1!
+giulia.verdi:Password123
+User3:Estate2024
+luca.neri:Juventus2024
+f.esposto:Napoli1926
+User2:LabUser21!
+s.romano:Roma2023!
+anna.gallo:Cristina88
+User4:Changeme1
+p.ricci:Admin2024!
+elena.conti:Primavera1!
+User5:Qwerty2024
+d.marino:Milano2024
+chiara.greco:Password1!
+User6:Welcome2024
+matteo.rizzo:Inter2023
+v.lombardi:Estate123!
